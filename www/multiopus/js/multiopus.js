@@ -9,6 +9,7 @@ function addVideoForStream(stream,muted)
 	//Set other properties
 	video.autoplay = true;
 	video.muted = muted;
+	video.play();
 }
 function removeVideoForStream(stream)
 {

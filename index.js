@@ -67,7 +67,11 @@ const server = https.createServer (options, (req, res) => {
 
 		// if is a directory search for index file matching the extention
 		if (fs.statSync (pathname).isDirectory ())
-			pathname += '/index.html';
+		{
+			res.writeHead(302, {Location: path.join(parsedUrl.pathname,"index.html")+ (parsedUrl.search ? parsedUrl.search : "")});
+			res.end();
+			return;
+		}
 
 		// read file from file system
 		fs.readFile (pathname, (err, data) => {
@@ -93,6 +97,7 @@ const wsServer = new WebSocketServer ({
 // Load the demo handlers
 const handlers = {
 	"multiopus"		: require("./lib/multiopus.js"),
+	"insertable-face"	: require("./lib/insertable-face.js"),
 };
 
 wsServer.on ('request', (request) => {
