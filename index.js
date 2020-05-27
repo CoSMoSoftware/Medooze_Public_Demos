@@ -98,6 +98,7 @@ const wsServer = new WebSocketServer ({
 const handlers = {
 	"multiopus"		: require("./lib/multiopus.js"),
 	"insertable-face"	: require("./lib/insertable-face.js"),
+	"sframe"		: require("./lib/sframe.js"),
 };
 
 wsServer.on ('request', (request) => {
