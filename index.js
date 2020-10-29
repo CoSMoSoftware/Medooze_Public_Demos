@@ -2,7 +2,7 @@ const Express			= require("express");
 const FS			= require("fs");
 const HTTPS			= require("https");
 const Path			= require("path");
-const WebSocketServer = require ('websocket').server;
+const WebSocketServer		= require ("websocket").server;
 
 //Get the Medooze Media Server interface
 const MediaServer = require("medooze-media-server");
@@ -30,11 +30,18 @@ MediaServer.setPortRange(10000,20000);
 const rest = Express();
 rest.use(Express.static("www"));
 
+//Get av1 demo
+const av1svc = require("./lib/av1svc.js");
+
+//init endpoint
+av1svc.init(endpoint);
+
 // Load the demo handlers
 const handlers = {
 	"multiopus"		: require("./lib/multiopus.js"),
 	"insertable-face"	: require("./lib/insertable-face.js"),
 	"sframe"		: require("./lib/sframe.js"),
+	"av1svc"		: av1svc.handler,
 };
 
 
@@ -46,7 +53,7 @@ function wss(server)
 		autoAcceptConnections: false
 	});
 
-	wsServer.on ('request', (request) => {
+	wssServer.on ("request", (request) => {
 		//Get protocol for demo
 		var protocol = request.requestedProtocols[0];
 

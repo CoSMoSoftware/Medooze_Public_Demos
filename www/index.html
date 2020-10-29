@@ -28,12 +28,14 @@
 		
 	</head>
 	<body>
-		    <br><button class="mdl-button mdl-js-button mdl-button--raised" id="insertableface">Remote Face Detection</button>
+		    <br><button class="mdl-button mdl-js-button mdl-button--raised" id="av1svc">AV1 SVC</button>
+		<br><br><button class="mdl-button mdl-js-button mdl-button--raised" id="insertableface">Remote Face Detection</button>
 		<br><br><button class="mdl-button mdl-js-button mdl-button--raised" id="multiopus">Multiopus</button>
 		<br><br><button class="mdl-button mdl-js-button mdl-button--raised" id="sframe">SFrame</button>
 
 	</body>
 	<script>
+		av1svc.onclick = () => document.location.href = "/av1svc";
 		insertableface.onclick = () => document.location.href = "/insertable-face";
 		multiopus.onclick = () => document.location.href = "/multiopus";
 		sframe.onclick = () => document.location.href = "/sframe";
