@@ -68,14 +68,14 @@
 		
 	<div id="container">
 		<dialog class="ready-dialog mdl-dialog">
-			<h4 class="mdl-dialog__title">AV1 SVC demo></h4>
+			<h4 class="mdl-dialog__title">AV1 SVC demo</h4>
 			<div class="mdl-dialog__content">
 				<p>
 					Please connect with the peerconnection_client and enter the id you have been assigned below
 				</p>
 				<form action="#" id="ready-form">
 					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-						<input class="mdl-textfield__input" type="text" id="roomId" name="peerId" required>
+						<input class="mdl-textfield__input" type="text" id="peerId" name="peerId" required>
 						<label class="mdl-textfield__label" for="peerId">Peer Id</label>
 					</div>
 				</form>
@@ -84,7 +84,7 @@
 				<button type="submit" class="ready mdl-button mdl-button mdl-button--raised  mdl-button--accent" id="connect" form="ready-form">Ready!</button>
 			</div>
 		</dialog>
-		<table sytle="displaye:none">
+		<table id="layers" style="display:none">
 			<tr>
 				<td></td>
 				<td>FPS/4</td>

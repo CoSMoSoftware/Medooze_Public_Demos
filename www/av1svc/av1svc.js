@@ -49,15 +49,14 @@ window.onload=()=>{
 		if (dialog.querySelector("#peerId").parentElement.MaterialTextfield) 
 			dialog.querySelector("#peerId").parentElement.MaterialTextfield.change(peerId);
 		else 
-			dialog.querySelector("#roomId").value = peerId;
-		dialog.querySelector("#name").focus();
+			dialog.querySelector("#peerId").value = peerId;
 	}
 	dialog.querySelector("form").addEventListener("submit", function(event) {
 		dialog.close();
-		start(url, this.roomId.value, this.name.value);
+		layers.style.display="inherit";
+		start(this.peerId.value);
 		event.preventDefault();
 	});
-	const dialog = document.querySelector("dialog");
 	dialog.showModal();
 	
 	
