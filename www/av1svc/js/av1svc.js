@@ -19,12 +19,11 @@ function start(peerId)
 		var listener = function(event) 
 		{
 			//Get data
-			var rid = event.target.dataset["rid"];
+			var spatialLayerId = event.target.dataset["sid"];
 			var temporalLayerId = event.target.dataset["tid"];
 			//Select simulcast layer
 			tm.event("SELECT_LAYER",{
-				rid		: rid,
-				spatialLayerId	: 0,
+				spatialLayerId	: spatialLayerId,
 				temporalLayerId	: temporalLayerId
 			});
 			//Remove
