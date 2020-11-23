@@ -78,8 +78,8 @@ function start(peerId)
 	
 	//The legends
 	const legends = {
-		incoming   : document.querySelector("#incoming-chart .legend span"),
-		outgoing   : document.querySelector("outgoing-chart .legend span"),
+		incoming   : document.querySelectorAll("#incoming-chart .legend span"),
+		outgoing   : document.querySelectorAll("#outgoing-chart .legend span"),
 	};
 	
 	let offset = 0;
@@ -90,21 +90,21 @@ function start(peerId)
 			const stats = event.data;
 			if (!offset)
 				//Calculate time diff between us an server
-				offset = (new Date()).getTime() - data.ts;
+				offset = (new Date()).getTime() - stats.ts;
 			//Get modified timestamp
-			const ts = data.ts+offset;
+			const ts = stats.ts+offset;
 			
 			//For each layer
-			for (const layer of stats.inconming.layers)
+			for (const layer of stats.incoming[""].media.individual)
 			{
 				const i = layer.spatialLayerId*3 +layer.temporalLayerId;
 				charts["incoming"].series[i].append(ts, layer.bitrate);
-				legends.incoming[1].innerHTML = layer.bitrate +"bps";
+				legends.incoming[i].innerHTML = Math.round(layer.bitrate/1000) +"kbps";
 			}
 			
 			//Outgoing bitrate
 			charts["outgoing"].series[0].append(ts, stats.outgoing.total);
-			legends.outgoing[0].innerHTML = stats.outgoing.total +"bps";
+			legends.outgoing[0].innerHTML = Math.round(stats.outgoing.media.bitrate/1000) + "kbps";
 		}
 	})
 	//Start on open
@@ -148,6 +148,7 @@ window.onload=()=>{
 	dialog.querySelector("form").addEventListener("submit", function(event) {
 		dialog.close();
 		layers.style.display="inherit";
+		page.style.display="inherit";
 		start(this.peerId.value);
 		event.preventDefault();
 	});
