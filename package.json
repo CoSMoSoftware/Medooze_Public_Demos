@@ -13,7 +13,6 @@
     "express": "^4.17.1",
     "greenlock-express": "^4.0.3",
     "medooze-media-server": "^0",
-    "medooze-shaka-packager": "file:../shaka-packager-node/dist/medooze-shaka-packager-1.3.14.tgz",
     "semantic-sdp": "^3",
     "transaction-manager": "^2.1.3",
     "websocket": "^1.0.26"
