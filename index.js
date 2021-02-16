@@ -16,15 +16,15 @@ if (process.argv.length!=3)
 //Get ip
 const ip = process.argv[2];
 
+//Restrict port range
+MediaServer.setPortRange(10000,10100);
+
 //Create UDP server endpoint
 const endpoint = MediaServer.createEndpoint(ip);
 
 //Enable debug
-MediaServer.enableDebug(true);
-MediaServer.enableUltraDebug(true);
-
-//Restrict port range
-MediaServer.setPortRange(10000,20000);
+MediaServer.enableDebug(false);
+MediaServer.enableUltraDebug(false);
 
 //Create rest api
 const rest = Express();
