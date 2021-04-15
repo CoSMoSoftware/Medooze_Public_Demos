@@ -1,4 +1,5 @@
 const Express			= require("express");
+const CORS 			= require("cors");
 const FS			= require("fs");
 const HTTPS			= require("https");
 const Path			= require("path");
@@ -28,6 +29,7 @@ MediaServer.enableUltraDebug(false);
 
 //Create rest api
 const rest = Express();
+rest.use(CORS());
 rest.use(Express.static("www"));
 
 //Get av1 demo
@@ -42,6 +44,7 @@ const handlers = {
 	"insertable-face"	: require("./lib/insertable-face.js"),
 	"sframe"		: require("./lib/sframe.js"),
 	"av1svc"		: av1svc.handler,
+	"twcc"			: require("./lib/twcc.js")
 };
 
 
